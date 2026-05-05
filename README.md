@@ -17,9 +17,7 @@ You do not need any programming skills to use it.
 To run lobster-dashboard on Windows, your system should meet these requirements:
 
 - Windows 10 or newer (64-bit recommended)
-- At least 8GB of RAM
-- Internet connection for live data updates
-- Web browser such as Google Chrome, Microsoft Edge, or Firefox (latest version)
+
 ---
 
 ## 🚀 Getting Started
